@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夕颜阁 - 古风原创文学与国风美学分享平台</title>
+    <meta name="description" content="夕颜阁是一个专注于古风原创文学、国风美学、汉服文化、诗词书画的线上雅集。在这里，您可以阅读优质的古风小说、散文，欣赏国风插画，了解汉服与传统文化知识，与同好交流心得。">
+    <meta name="keywords" content="夕颜阁,古风,原创文学,国风美学,汉服,诗词,小说,古风插画,传统文化,雅集">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Songti SC", "SimSun", "STSong", "Noto Serif SC", serif;
+            background-color: #f9f6f0;
+            color: #3b3a36;
+            line-height: 1.8;
+            letter-spacing: 0.03em;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background: linear-gradient(135deg, #2d2a26 0%, #4a4238 100%);
+            color: #f3ede3;
+            padding: 20px 0;
+            border-bottom: 3px solid #c4a484;
+            position: relative;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            font-size: 2.2rem;
+            color: #d4b896;
+        }
+        .logo-text h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 8px;
+            color: #f3ede3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .logo-text .subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: #c4a484;
+            margin-top: -4px;
+        }
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .header-nav a {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            color: #e0d6c7;
+        }
+        .header-nav a:hover {
+            border-bottom-color: #d4b896;
+            color: #ffffff;
+        }
+
+        /* Main visual */
+        .hero {
+            background: linear-gradient(rgba(45, 42, 38, 0.6), rgba(45, 42, 38, 0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect width="1200" height="400" fill="%232d2a26"/><circle cx="200" cy="120" r="60" fill="none" stroke="%23d4b896" stroke-width="1" opacity="0.5"/><circle cx="200" cy="120" r="40" fill="none" stroke="%23c4a484" stroke-width="0.5" opacity="0.4"/><circle cx="900" cy="250" r="80" fill="none" stroke="%23d4b896" stroke-width="0.8" opacity="0.3"/><path d="M50 300 Q200 150 400 280 Q600 100 800 250 Q1000 180 1150 300" fill="none" stroke="%23a08570" stroke-width="1" opacity="0.4"/><circle cx="600" cy="80" r="25" fill="%23d4b896" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: #f3ede3;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 12px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 2;
+            color: #e0d6c7;
+            letter-spacing: 2px;
+        }
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 36px;
+            border: 1px solid #d4b896;
+            color: #f3ede3;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            background: rgba(212, 184, 150, 0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .hero-btn:hover {
+            background: #d4b896;
+            color: #2d2a26;
+        }
+
+        /* Section styles */
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 6px;
+            color: #4a4238;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #c4a484;
+        }
+        .section-title p {
+            color: #8a7b6c;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+        }
+
+        /* Feature cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e8e0d5;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(74, 66, 56, 0.1);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #a08570;
+            margin-bottom: 15px;
+        }
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #4a4238;
+            letter-spacing: 2px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #6b6258;
+            line-height: 1.7;
+        }
+
+        /* Content areas */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .content-block {
+            background: #ffffff;
+            border: 1px solid #e8e0d5;
+            padding: 30px;
+        }
+        .content-block h3 {
+            font-size: 1.3rem;
+            color: #4a4238;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e8e0d5;
+        }
+        .content-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #e0d6c7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .content-list li:last-child {
+            border-bottom: none;
+        }
+        .content-list .tag {
+            background: #f0e9df;
+            color: #8a7b6c;
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+        .content-list .item-title {
+            flex: 1;
+            color: #4a4238;
+            transition: color 0.3s;
+        }
+        .content-list .item-title:hover {
+            color: #a08570;
+        }
+        .content-list .date {
+            color: #a09a90;
+            font-size: 0.8rem;
+        }
+
+        /* Novel list */
+        .novel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .novel-card {
+            background: #ffffff;
+            border: 1px solid #e8e0d5;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .novel-card:hover {
+            border-color: #c4a484;
+            box-shadow: 0 8px 20px rgba(74, 66, 56, 0.08);
+        }
+        .novel-card .novel-title {
+            font-size: 1.2rem;
+            color: #4a4238;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .novel-card .novel-author {
+            font-size: 0.85rem;
+            color: #a08570;
+            margin-bottom: 12px;
+        }
+        .novel-card .novel-desc {
+            font-size: 0.9rem;
+            color: #6b6258;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .novel-card .status {
+            display: inline-block;
+            padding: 3px 12px;
+            border: 1px solid #d4b896;
+            color: #a08570;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .gallery-item {
+            background: #e8e0d5;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #8a7b6c;
+            border: 1px solid #d8cec0;
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            background: #d8cec0;
+            color: #4a4238;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e8e0d5;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+        }
+        .faq-item h3 {
+            font-size: 1.05rem;
+            color: #4a4238;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #6b6258;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #2d2a26;
+            color: #a09a90;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #c4a484;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        .footer-copy {
+            font-size: 0.8rem;
+            border-top: 1px solid #4a4238;
+            padding-top: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .novel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .footer-links {
+                gap: 15px;
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 576px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .novel-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 60px 0;
+            }
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            .logo-text h1 {
+                font-size: 1.5rem;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <span class="logo-icon">✦</span>
+                <div class="logo-text">
+                    <h1>夕颜阁</h1>
+                    <div class="subtitle">古风雅集 · 以文会友</div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#feature">阁中雅事</a>
+                <a href="#novels">原创小说</a>
+                <a href="#poetry">诗词文赋</a>
+                <a href="#gallery">丹青阁</a>
+                <a href="#culture">汉服文化</a>
+                <a href="#faq">入阁须知</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>夕颜花开 · 静候君来</h2>
+            <p>夕颜阁，一处隐于尘世的古风雅集。我们以笔墨纸砚为伴，以诗词歌赋会友，专注于古风原创文学的创作与分享，亦探寻汉服、书画、茶道等传统美学中的生活意趣。</p>
+            <a href="#novels" class="hero-btn">入阁赏文</a>
+        </div>
+    </section>
+
+    <section class="section" id="feature">
+        <div class="container">
+            <div class="section-title">
+                <h2>阁中雅事</h2>
+                <p>夕颜阁内设有多个雅间，供同好各取所乐</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✒️</div>
+                    <h3>原创文斋</h3>
+                    <p>汇集古风小说、散文、随笔等原创佳作，或缠绵悱恻，或豪气干云，皆出自阁友笔下。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📜</div>
+                    <h3>诗词唱和</h3>
+                    <p>每日一诗一词，以古韵写今情。每逢节气节令，更有专题诗会，以诗会友，不亦乐乎。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>丹青妙笔</h3>
+                    <p>展示阁友国画、插画、书法作品，以水墨丹青描绘心中的江湖与桃源。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👘</div>
+                    <h3>汉服同袍</h3>
+                    <p>分享汉服形制知识、穿搭心得、传统节日活动，与同袍共赏衣冠之美。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="novels" style="background: #f1ebe2;">
+        <div class="container">
+            <div class="section-title">
+                <h2>原创小说 · 本周热读</h2>
+                <p>阁中最新与最受欢迎的古风小说连载推荐</p>
+            </div>
+            <div class="novel-grid">
+                <div class="novel-card">
+                    <div class="novel-title">《长安落雪时》</div>
+                    <div class="novel-author">作者：青黛</div>
+                    <div class="novel-desc">大雪纷飞的长安城，一名来自西域的画师与左骁卫将军因一幅旧画相遇，牵出一段尘封多年的宫廷往事……</div>
+                    <span class="status">连载中</span>
+                </div>
+                <div class="novel-card">
+                    <div class="novel-title">《锦瑟无端》</div>
+                    <div class="novel-author">作者：苏挽歌</div>
+                    <div class="novel-desc">江南织造之女锦瑟，因一匹失窃的云锦卷入权谋漩涡。她以针线为刃，在暗流涌动的时局中寻回真相与初心。</div>
+                    <span class="status">已完结</span>
+                </div>
+                <div class="novel-card">
+                    <div class="novel-title">《问剑江湖》</div>
+                    <div class="novel-author">作者：谢无衣</div>
+                    <div class="novel-desc">少年剑客自漠北而来，身负师门血仇。江湖路远，人心险恶，他唯有以手中之剑，问一个公道。</div>
+                    <span class="status">连载中</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="two-column">
+                <div class="content-block" id="poetry">
+                    <h3>诗词文赋</h3>
+                    <ul class="content-list">
+                        <li><span class="tag">七绝</span><span class="item-title">《秋夜寄怀》</span><span class="date">昨日</span></li>
+                        <li><span class="tag">词牌</span><span class="item-title">《临江仙·夜泊》</span><span class="date">三日前</span></li>
+                        <li><span class="tag">古风</span><span class="item-title">《山居秋暝赋》</span><span class="date">五日前</span></li>
+                        <li><span class="tag">五律</span><span class="item-title">《月下独酌有感》</span><span class="date">上周</span></li>
+                        <li><span class="tag">骈文</span><span class="item-title">《夕颜阁记》</span><span class="date">开阁之作</span></li>
+                    </ul>
+                </div>
+                <div class="content-block" id="culture">
+                    <h3>汉服与国风</h3>
+                    <ul class="content-list">
+                        <li><span class="tag">科普</span><span class="item-title">晋制汉服与唐制汉服的区别</span><span class="date">今日</span></li>
+                        <li><span class="tag">穿搭</span><span class="item-title">秋日汉服叠穿指南</span><span class="date">两日前</span></li>
+                        <li><span class="tag">活动</span><span class="item-title">上巳节踏青活动回顾</span><span class="date">上月</span></li>
+                        <li><span class="tag">知识</span><span class="item-title">传统纹样中的吉祥寓意</span><span class="date">持续更新</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery" style="background: #f1ebe2;">
+        <div class="container">
+            <div class="section-title">
+                <h2>丹青阁 · 近期佳作</h2>
+                <p>阁友书画与插画作品选登</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">水墨 · 山水间</div>
+                <div class="gallery-item">工笔 · 花鸟册</div>
+                <div class="gallery-item">插画 · 江湖行</div>
+                <div class="gallery-item">书法 · 兰亭序临摹</div>
+                <div class="gallery-item">设色 · 仕女图</div>
+                <div class="gallery-item">写意 · 竹石图</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>阁中札记</h2>
+                <p>关于古风创作与传统文化的一些思考</p>
+            </div>
+            <div class="two-column">
+                <div class="content-block">
+                    <h3>创作谈</h3>
+                    <p style="margin-bottom: 15px; font-size: 0.95rem; color: #6b6258;">古风创作并非简单堆砌辞藻。真正的古风，应是在理解古代文化精神内核的基础上，以现代人的视角去重构一个可信、可感的世界。在夕颜阁，我们鼓励阁友考据历史细节，琢磨人物风骨，让笔下的故事既有古韵，又有真情。</p>
+                    <p style="font-size: 0.95rem; color: #6b6258;">无论是小说中的典章制度、衣食住行，还是诗词中的格律意象，都值得细细推敲。我们相信，唯有真诚与严谨，方能在创作中抵达那个令人神往的古风世界。</p>
+                </div>
+                <div class="content-block">
+                    <h3>入阁指引</h3>
+                    <p style="margin-bottom: 15px; font-size: 0.95rem; color: #6b6258;">夕颜阁欢迎每一位热爱古风与传统文化的新朋友。入阁后，您可以投稿原创作品，参与每月诗会，或在讨论区与同好交流心得。</p>
+                    <p style="font-size: 0.95rem; color: #6b6258;">我们期待看到您的第一篇文章、第一幅画作，或是第一次汉服出行分享。无需顾虑水平高低，以文会友，贵在真诚。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="faq" style="background: #f1ebe2;">
+        <div class="container">
+            <div class="section-title">
+                <h2>入阁须知</h2>
+                <p>关于夕颜阁的常见问题</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Q：夕颜阁是做什么的？</h3>
+                    <p>夕颜阁是一个以古风原创文学为核心的线上文化交流空间，同时涵盖汉服、书画、诗词等传统文化领域。我们提供作品发布与交流的平台，定期组织线上活动。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q：如何加入夕颜阁？</h3>
+                    <p>目前夕颜阁以网页形式运营，您可以直接浏览内容，无需注册。未来若开放注册功能，我们会在站内公告，敬请留意。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q：我可以投稿自己的作品吗？</h3>
+                    <p>当然可以。我们欢迎所有原创的古风小说、诗词、散文、绘画、书法及汉服穿搭等内容。请确保作品为本人原创，且不涉及抄袭或侵权。</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q：投稿或联系阁主的方式？</h3>
+                    <p>若您希望投稿或有其他事宜，可在页面底部留言，或通过我们预留的联系邮箱与我们取得联系。我们会在数日内回复。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#feature">阁中雅事</a>
+                <a href="#novels">原创小说</a>
+                <a href="#poetry">诗词文赋</a>
+                <a href="#gallery">丹青阁</a>
+                <a href="#culture">汉服文化</a>
+                <a href="#faq">入阁须知</a>
+            </div>
+            <div class="footer-copy">
+                <p>夕颜阁 · 以文会友，以雅相知</p>
+                <p>愿每一位入阁之人都能在此寻得片刻宁静与共鸣</p>
+                <p style="margin-top: 10px;">© 2024 夕颜阁 版权所有 · 尊重原创，转载请联系</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
